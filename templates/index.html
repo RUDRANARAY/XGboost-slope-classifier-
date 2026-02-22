@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slope Stability Predictor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🏔️ Slope Stability Predictor</h2>
+
+    <form action="/predict" method="POST">
+
+        <label>Unit Weight</label>
+        <input type="number" step="any" name="unit_weight" required>
+
+        <label>Cohesion</label>
+        <input type="number" step="any" name="cohesion" required>
+
+        <label>Internal Friction Angle</label>
+        <input type="number" step="any" name="friction" required>
+
+        <label>Slope Angle</label>
+        <input type="number" step="any" name="slope_angle" required>
+
+        <label>Slope Height</label>
+        <input type="number" step="any" name="slope_height" required>
+
+        <label>Pore Pressure Ratio</label>
+        <input type="number" step="any" name="pore_pressure" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            Prediction: {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
